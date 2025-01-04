@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:scribble_guesser_app/screens/create_room_screen.dart';
+import 'package:scribble_guesser_app/screens/join_room_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -40,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 child: Text(
                   "Create",
-                  style: TextStyle(fontSize: 16),
+                  style: TextStyle(fontSize: 16, color: Colors.white),
                 ),
               ),
               ElevatedButton(
@@ -48,11 +49,17 @@ class _HomeScreenState extends State<HomeScreen> {
                   minimumSize: Size(MediaQuery.sizeOf(context).width / 2.5, 50),
                   backgroundColor: Colors.blue,
                   textStyle: TextStyle(color: Colors.white),
+                
                 ),
-                onPressed: () {},
+                onPressed: ()=> Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => JoinRoomScreen(),
+                  ),
+                ),
                 child: Text(
                   "Join",
-                  style: TextStyle(fontSize: 16),
+                  style: TextStyle(fontSize: 16, color: Colors.white),
                 ),
               )
             ],

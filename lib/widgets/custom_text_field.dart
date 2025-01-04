@@ -20,7 +20,7 @@ class CustomTextField extends StatelessWidget {
         ),
         contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 14),
         filled: true,
-        fillColor: Color(0xffF5F5FA),
+        fillColor: Color(0xffF5F6FA),
         hintText: hint,
         hintStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.w400)
       ),

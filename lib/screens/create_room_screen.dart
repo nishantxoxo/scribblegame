@@ -11,6 +11,8 @@ class CreateRoomScreen extends StatefulWidget {
 class _CreateRoomScreenState extends State<CreateRoomScreen> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _roomNameController = TextEditingController();
+  late String? _maxRoundsValue;
+  late String? _roomSizeValue;
 
   @override
   Widget build(BuildContext context) {
@@ -50,6 +52,7 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
             height: 20,
           ),
           DropdownButton<String>(
+            focusColor: Color(0xffF5F6FA),
             items: ["2", "5", "10", "15"]
                 .map<DropdownMenuItem<String>>(
                   (String value) => DropdownMenuItem(
@@ -61,7 +64,60 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
                   ),
                 )
                 .toList(),
-            onChanged: (){},
+            hint: Text(
+              "select max rounds",
+              style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500),
+            ),
+            onChanged: (String? value) {
+              setState(() {
+                _maxRoundsValue = value;
+              });
+            },
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          DropdownButton<String>(
+            focusColor: Color(0xffF5F6FA),
+            items: ["2", "3", "4", "5", "6", "7", "8"]
+                .map<DropdownMenuItem<String>>(
+                  (String value) => DropdownMenuItem(
+                    value: value,
+                    child: Text(
+                      value,
+                      style: TextStyle(color: Colors.black),
+                    ),
+                  ),
+                )
+                .toList(),
+            hint: Text(
+              "select room size",
+              style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500),
+            ),
+            onChanged: (String? value) {
+              setState(() {
+                _roomSizeValue = value;
+              });
+            },
+          ),
+          SizedBox(height: 40),
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              minimumSize: Size(MediaQuery.sizeOf(context).width / 2.5, 50),
+              backgroundColor: Colors.blue,
+              textStyle: TextStyle(color: Colors.white),
+            ),
+            onPressed: () {},
+            child: Text(
+              "create",
+              style: TextStyle(color: Colors.white, fontSize: 16),
+            ),
           )
         ],
       ),
