@@ -22,6 +22,18 @@ mongoose.connect(db).then(() => {
     console.log(e)
 })
 
+
+io.on('connection', (socket)=>{
+    console.log("connected")
+    socket.on('create-game', async ({nickname, roomName, occupancy, maxRounds}) => {
+        try {
+            
+        } catch (error) {
+            
+        }
+    })
+})
+
 server.listen(PORT, "0.0.0.0",()=> {
     console.log("server started")
 } )
