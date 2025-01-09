@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:scribble_guesser_app/screens/home_screen.dart';
+import 'package:scribble_guesser_app/screens/paint_screen.dart';
 
 void main() {
   runApp(const MyApp());
