@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:scribble_guesser_app/models/my_custom_painter.dart';
 import 'package:scribble_guesser_app/models/touchpoints.dart';
@@ -76,7 +78,9 @@ class _PaintScreenState extends State<PaintScreen> {
                 height: height * 0.55,
                 child: GestureDetector(
                   onPanUpdate: (details) {},
-                  onPanStart: (details) {},
+                  onPanStart: (details) {
+                    // Socket.emit
+                  }, 
                   onPanEnd: (details) {},
                   child: SizedBox.expand(
                     child: ClipRRect(
