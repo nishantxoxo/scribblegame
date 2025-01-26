@@ -92,6 +92,10 @@ io.on('connection', (socket)=>{
             
         }
     })
+    //white board sockets
+    socket.on('paint', ({details, roomName})=> {
+        io.to(roomName).emit('points', {details: details})
+    })
 
 })
 

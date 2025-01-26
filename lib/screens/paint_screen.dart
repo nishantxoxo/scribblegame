@@ -20,6 +20,8 @@ class _PaintScreenState extends State<PaintScreen> {
   late io.Socket _socket; //
   Map dataOfRoom = {};
   List<Touchpoints> points = [];
+  StrokeCap strokeType = StrokeCap.round;
+  Color selectedColor = Colors.black;
   @override
   void initState() {
     // TODO: implement initState
@@ -57,6 +59,17 @@ class _PaintScreenState extends State<PaintScreen> {
             }
           },
         );
+        _socket.on('points', (point) {
+          if (point['details'] != null) {
+            setState(() {
+              points.add(Touchpoints(
+                  points: Offset(
+                      (point['details']['dx']), (point['details']['dy'])),
+                  paint: Paint()..strokeCap = strokeType..isAntiAlias = true..color = selectedColor, 
+                ));
+            });
+          }
+        });
       },
     );
   }
@@ -67,6 +80,7 @@ class _PaintScreenState extends State<PaintScreen> {
     final height = MediaQuery.sizeOf(context).height;
 
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Stack(
         children: [
           Column(
@@ -96,7 +110,7 @@ class _PaintScreenState extends State<PaintScreen> {
                       },
                       'roomName': widget.data['name'],
                     });
-                  }, 
+                  },
                   onPanEnd: (details) {
                     print(details.localPosition.dx);
                     _socket.emit('paint', {
